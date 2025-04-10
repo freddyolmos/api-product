@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { validationSchema } from './config/config-schema';
 import { MongooseModule } from '@nestjs/mongoose';
-import * as Joi from 'joi';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -22,7 +21,8 @@ import { AuthModule } from './auth/auth.module';
         uri: configService.get<string>('MONGO_URI'),
       }),
     }), // Use the variable from your .env
-    UsersModule, AuthModule,
+    UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
